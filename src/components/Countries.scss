@@ -1,2 +1,51 @@
 .Countries {
+   > article {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    > div {
+        margin: 1rem;
+        padding : 0;
+        border: 1px #666 solid;
+        border-radius: .5rem;
+        background-color: #282c34;
+        background-image: linear-gradient(180deg,#282c34,#181c24);
+        box-shadow: 2px 2px 8px #333;
+   }
+   } 
+   
+   > section {
+      margin: 1rem;
+      
+      input {
+        width: 100% ;
+        padding: .5rem;
+        border-radius: .5rem;
+      }
+   }
 }
+@media screen and (max-width: 1024px) {
+    .Countries {
+        > article {
+         grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .Countries {
+        > article {
+         grid-template-columns: 1fr;
+
+         > div {
+            margin : 1rem 0;
+        }
+        }
+
+        > section {
+            margin : 1rem 0;
+        }
+    }
+}
+
+

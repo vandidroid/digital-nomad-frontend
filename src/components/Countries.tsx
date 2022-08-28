@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import { CountryType } from "../types";
 import "./Countries.scss";
 import Country from "./Country";
@@ -9,12 +9,17 @@ function Countries() {
   //  const setCountries = arr[1];
 
   const [countries, setCountries] = useState([]);
+  const [nameFilter, setNameFilter] = useState("");
 
   const fetchCountries = async () => {
     const result = await fetch("/api/countries");
     const countries = await result.json();
     setCountries(countries);
   };
+
+  const filterCountries = (e: React.FormEvent<HTMLInputElement>) => {
+    setNameFilter(e.currentTarget.value);
+  } 
 
   useEffect(() => {
     fetchCountries();
@@ -23,11 +28,17 @@ function Countries() {
   return (
     <div className="Countries">
       <h3>Countries</h3>
-      {countries.map((country: CountryType) => (
+      <section><input type="search" placeholder="Filter countries by name" value={nameFilter} onInput={filterCountries} /></section>
+      
+      <article>
+      {countries.filter((country: CountryType) => country.name.includes(nameFilter)).map((country: CountryType) => (
         <div key={country.id}>
           <Country data={country} />
         </div>
       ))}
+      </article>
+
+
     </div>
   );
 }

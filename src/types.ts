@@ -1,4 +1,4 @@
-export type CountryType = {id: number, name: string};
+export type CountryType = {id: number, name: string, population: number, area: number};
 
 export type LocationType = {
   id: number,
