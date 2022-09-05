@@ -1,16 +1,24 @@
 import { CountryType } from "../types";
 import "./Country.scss";
 
-function Country(props : {data: CountryType}) {
-    return <div className="Country">
-        <h5>{props.data.id}. {props.data.name}</h5>
-        
-        <div>
+function Country(props: { data: CountryType }) {
+  return (
+    <div className="Country">
+      <h4>
+        <span>
+        {props.data.id}
+        </span>
+        {props.data.name}
+        <img src={props.data.flag} />
+      </h4>
+      <div>
+        <div>Capital: {props.data.capital}</div>
         <div>Population: {props.data.population}</div>
         <div>Area: {props.data.area}</div>
-        </div>
-     
-        </div>
+      </div>
+      <section><a href={`https://en.wikipedia.org/wiki/${props.data.name}`} target="_blank">W</a></section>
+    </div>
+  );
 }
 
 export default Country;
