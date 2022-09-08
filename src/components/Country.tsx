@@ -1,12 +1,12 @@
 import { CountryType } from "../types";
 import "./Country.scss";
 
-function Country(props: { data: CountryType }) {
+function Country(props: { data: CountryType, index: number }) {
   return (
     <div className="Country">
       <h4>
         <span>
-        {props.data.id}
+        {props.index + 1}
         </span>
         {props.data.name}
         <img src={props.data.flag} />
