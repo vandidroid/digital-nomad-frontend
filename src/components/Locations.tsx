@@ -2,20 +2,30 @@ import React, { useEffect, useState } from "react";
 import { LocationType } from "../types";
 import Location from "./Location";
 import "./Locations.scss";
-
+ 
 function Locations() {
   const [locations, setLocations] = useState([]);
+  const [filteredLocations, setFilteredLocations] = useState([]);
   const [nameFilter, setNameFilter] = useState("");
 
   const fetchLocations = async () => {
     const result = await fetch("/api/locations");
     const locations = await result.json();
     setLocations(locations);
+    setFilteredLocations(locations);
   };
 
   const filterLocations = (e: React.FormEvent<HTMLInputElement>) => {
     setNameFilter(e.currentTarget.value);
   };
+
+  useEffect(() => {
+    setFilteredLocations(
+      locations.filter((location: LocationType) =>
+        location.name.toLowerCase().includes(nameFilter.toLowerCase())
+      )
+    );
+  }, [nameFilter]);
 
   useEffect(() => {
     fetchLocations();
@@ -32,11 +42,11 @@ function Locations() {
           onInput={filterLocations}
         />
       </section>
+      <section>
+        {filteredLocations.length} of {locations.length} Locations
+      </section>
       <article>
-        {locations
-          .filter((location: LocationType) =>
-            location.name.toLowerCase().includes(nameFilter.toLowerCase())
-          )
+        {filteredLocations
           .sort((location1: LocationType, location2: LocationType) =>
             location1.name.localeCompare(location2.name)
           )
