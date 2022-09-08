@@ -12,10 +12,9 @@ export type CountryType = {
 export type LocationType = {
   id: number;
   name: string;
-  country: {
-    id: number;
-    name: string;
-  };
+  population: number;
+  area: number;
+  country: CountryType;
 };
 
 /*
