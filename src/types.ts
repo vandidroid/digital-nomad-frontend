@@ -14,6 +14,7 @@ export type LocationType = {
   name: string;
   population: number;
   area: number;
+  coverImage: string;
   country: CountryType;
 };
 

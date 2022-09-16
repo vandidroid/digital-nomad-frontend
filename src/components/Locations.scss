@@ -1,7 +1,7 @@
 .Locations {
     > article {
      display: grid;
-     grid-template-columns: 1fr 1fr 1fr;
+     grid-template-columns: 1fr 1fr 1fr 1fr;
  
      > div {
          margin: 1rem;
@@ -27,7 +27,7 @@
  @media screen and (max-width: 1024px) {
      .Locations {
          > article {
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr 1fr 1fr;
          }
      }
  }
@@ -35,18 +35,26 @@
  @media screen and (max-width: 768px) {
      .Locations {
          > article {
-          grid-template-columns: 1fr;
- 
-          > div {
-             margin : 1rem 0;
-         }
-         }
- 
-         > section {
-             margin : 1rem 0;
-         }
-     }
+          grid-template-columns: 1fr 1fr;
+      }
+    }
  }
+
+ @media screen and (max-width: 540px) {
+    .Locations {
+        > article {
+         grid-template-columns: 1fr;
+
+         > div {
+            margin : 1rem 0;
+        }
+        }
+
+        > section {
+            margin : 1rem 0;
+        }
+    }
+}
  
  
  
