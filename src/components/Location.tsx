@@ -11,7 +11,7 @@ function Location(props: { data: LocationType; index: number }) {
         {props.data.name}
       </h4>
       <div>
-        Country: {props.data.country.name}
+        {props.data.country.name}
       </div>
       <section>
         <a
