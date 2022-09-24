@@ -1,4 +1,10 @@
 .Menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
   ul {
     margin: 0;
     list-style-type: none;

@@ -18,9 +18,13 @@ export type LocationType = {
   country: CountryType;
 };
 
-/*
-export interface CountryType {
-      id: number
-    , name: string
-};
-*/
+
+export enum SortDirection {
+  ASC, 
+  DESC
+}
+
+export type SortType = {
+  criteria: string;
+  direction: SortDirection;
+}
