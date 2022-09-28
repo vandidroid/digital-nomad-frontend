@@ -18,13 +18,12 @@ export type LocationType = {
   country: CountryType;
 };
 
-
 export enum SortDirection {
-  ASC, 
-  DESC
+  ASC = 1,
+  DESC = -1,
 }
 
 export type SortType = {
   criteria: string;
   direction: SortDirection;
-}
+};

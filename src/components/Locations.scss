@@ -1,5 +1,5 @@
 .Locations {
-  margin-top: 4rem;
+  margin-top: 3.5rem;
 
   > article {
     display: grid;
@@ -21,20 +21,6 @@
 
     span {
       padding: 0.2rem;
-
-      select {
-        padding: 0.2rem;
-        border-color: #666;
-        border-radius: 0.2rem;
-        background-color: #181c24;
-        color: whitesmoke;
-      }
-    }
-
-    input {
-      width: 100%;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
     }
   }
 }

@@ -1,5 +1,6 @@
 .Countries {
-  margin-top: 4rem;
+  margin-top: 3.5rem;
+
   > article {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -18,10 +19,8 @@
   > section {
     margin: 1rem;
 
-    input {
-      width: 100%;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
+    span {
+      padding: 0.2rem;
     }
   }
 }

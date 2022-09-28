@@ -8,11 +8,12 @@ function Locations() {
   const [filteredLocations, setFilteredLocations] = useState<LocationType[]>(
     []
   );
+  const [nameFilter, setNameFilter] = useState("");
+
   const [sort, setSort] = useState<SortType>({
     criteria: "location",
     direction: SortDirection.ASC,
   });
-  const [nameFilter, setNameFilter] = useState("");
 
   const fetchLocations = async () => {
     const result = await fetch("/api/locations");
@@ -29,29 +30,36 @@ function Locations() {
     location1: LocationType,
     location2: LocationType
   ) => {
-    if (sort.criteria == "location" && sort.direction == SortDirection.ASC) {
-      return location1.name.localeCompare(location2.name);
-    }
+    switch (sort.criteria) {
+      case "locationName":
+        return sort.direction * location1.name.localeCompare(location2.name);
 
-    if (sort.criteria == "location" && sort.direction == SortDirection.DESC) {
-      return location2.name.localeCompare(location1.name);
-    }
+      case "countryName":
+        return (
+          sort.direction *
+          location1.country.name.localeCompare(location2.country.name)
+        );
 
-    if (sort.criteria == "country" && sort.direction == SortDirection.ASC) {
-      return location1.country.name.localeCompare(location2.country.name);
+      default:
+        return location1.name.localeCompare(location2.name);
     }
-
-    if (sort.criteria == "country" && sort.direction == SortDirection.DESC) {
-      return location2.country.name.localeCompare(location1.country.name);
-    }
-
-    return location1.name.localeCompare(location2.name);
   };
+
+  const changeSortCriteria = (e: React.FormEvent<HTMLSelectElement>) =>
+    setSort({ ...sort, criteria: e.currentTarget.value });
+
+  const changeSortDirection = (e: React.FormEvent<HTMLSelectElement>) =>
+    setSort({
+      ...sort,
+      direction: Number(e.currentTarget.value),
+    });
 
   useEffect(() => {
     setFilteredLocations(
-      locations.filter((location: LocationType) =>
-        location.name.toLowerCase().includes(nameFilter.toLowerCase())
+      locations.filter(
+        (location: LocationType) =>
+          location.name.toLowerCase().includes(nameFilter.toLowerCase()) ||
+          location.country.name.toLowerCase().includes(nameFilter.toLowerCase())
       )
     );
   }, [nameFilter]);
@@ -66,46 +74,32 @@ function Locations() {
       <section>
         <input
           type="search"
-          placeholder="Filter locations by name"
+          placeholder="Filter locations"
           value={nameFilter}
           onInput={filterLocations}
         />
       </section>
-      <section>
-        <span>
+      <section className="flex-container">
+        <div>
           {filteredLocations.length} of {locations.length} Locations
-        </span>
-
-        <span>
-          <label>, sort by</label>
-        </span>
-
-        <span>
-          <select
-            onChange={(e: React.FormEvent<HTMLSelectElement>) =>
-              setSort({
-                criteria: e.currentTarget.value,
-                direction: sort.direction,
-              })
-            }
-          >
-            <option value={"location"}>name</option>
-            <option value={"country"}>country name</option>
-          </select>
-        </span>
-        <span>
-          <select
-            onChange={(e: React.FormEvent<HTMLSelectElement>) =>
-              setSort({
-                criteria: sort.criteria,
-                direction: Number(e.currentTarget.value),
-              })
-            }
-          >
-            <option value={SortDirection.ASC}>asc</option>
-            <option value={SortDirection.DESC}>desc</option>
-          </select>
-        </span>
+        </div>
+        <div>
+          <span>
+            <label>Sort by</label>
+          </span>
+          <span>
+            <select onChange={changeSortCriteria}>
+              <option value="locationName">name</option>
+              <option value="countryName">country name</option>
+            </select>
+          </span>
+          <span>
+            <select onChange={changeSortDirection}>
+              <option value={SortDirection.ASC}>asc</option>
+              <option value={SortDirection.DESC}>desc</option>
+            </select>
+          </span>
+        </div>
       </section>
       <article>
         {filteredLocations
