@@ -70,7 +70,7 @@ function Locations() {
 
   return (
     <div className="Locations">
-      <h3>Locations</h3>
+      <h3 hidden>Locations</h3>
       <section>
         <input
           type="search"

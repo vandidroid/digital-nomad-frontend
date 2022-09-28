@@ -1,3 +1,5 @@
+export type MenuProps = { items: { title: string; path: string }[] };
+
 export type CountryType = {
   id: number;
   name: string;

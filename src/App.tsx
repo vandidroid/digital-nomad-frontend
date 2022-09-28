@@ -9,29 +9,33 @@ import Home from "./components/Home";
 function App() {
   const items = [
     {
+      title: "Home",
+      path: "",
+    },
+    {
       title: "Countries",
       path: "countries",
     },
     {
       title: "Locations",
-      path:"locations",
+      path: "locations",
     },
     {
-     title: "Digital Nomads",
-     path:"dinos",
-    }
+      title: "Digital Nomads",
+      path: "dinos",
+    },
   ];
 
   return (
     <div className="App">
       <Menu items={items} />
       <main>
-      <Routes>
-        <Route path="countries" element={<Countries />} />
-        <Route path="locations" element={<Locations />} />
-        <Route path="dinos" element={<DigitalNomads />} />
-        <Route path="/" element={<Home />} />
-      </Routes>
+        <Routes>
+          <Route path="countries" element={<Countries />} />
+          <Route path="locations" element={<Locations />} />
+          <Route path="dinos" element={<DigitalNomads />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
       </main>
     </div>
   );

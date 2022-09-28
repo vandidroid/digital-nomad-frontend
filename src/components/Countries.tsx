@@ -60,7 +60,7 @@ function Countries() {
 
   return (
     <div className="Countries">
-      <h3>Countries</h3>
+      <h3 hidden>Countries</h3>
       <section>
         <input
           type="search"

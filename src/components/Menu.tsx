@@ -1,23 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { MenuProps } from "../types";
 import "./Menu.scss";
 
-type MenuProps = {items : {title: string, path: string }[] };
+function Menu({ items }: MenuProps) {
+  const locationUrl = useLocation();
 
-function Menu({ items } : MenuProps) {
   return (
     <header className="Menu">
       <nav>
         <ul>
-          <li>
-            <Link to="">
-            <span>H</span>ome
-            </Link>
-          </li>
           {items.map((item) => (
-            <li key={item.title}>
-            <Link to={item.path}>
-            {item.title}
-            </Link>
+            <li
+              key={item.title}
+              className={
+                "/" + item.path === locationUrl.pathname ? "active" : ""
+              }
+            >
+              <Link to={item.path}>{item.title}</Link>
             </li>
           ))}
         </ul>
