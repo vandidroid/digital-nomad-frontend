@@ -1,4 +1,4 @@
-.Countries {
+.DigitalNomads {
   margin-top: 3.5rem;
 
   > article {
@@ -25,7 +25,7 @@
   }
 }
 @media screen and (max-width: 1024px) {
-  .Countries {
+  .DigitalNomads {
     > article {
       grid-template-columns: 1fr 1fr;
     }
@@ -33,7 +33,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .Countries {
+  .DigitalNomads {
     > article {
       grid-template-columns: 1fr;
 

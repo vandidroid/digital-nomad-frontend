@@ -1,3 +1,5 @@
+export type MenuProps = { items: { title: string; path: string }[] };
+
 export type CountryType = {
   id: number;
   name: string;
@@ -18,13 +20,22 @@ export type LocationType = {
   country: CountryType;
 };
 
+export type DigitalNomadType = {
+  id: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  nickname: string;
+  gender: string;
+  location: LocationType;
+};
 
 export enum SortDirection {
-  ASC, 
-  DESC
+  ASC = 1,
+  DESC = -1,
 }
 
 export type SortType = {
   criteria: string;
   direction: SortDirection;
-}
+};
