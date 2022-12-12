@@ -20,6 +20,16 @@ export type LocationType = {
   country: CountryType;
 };
 
+export type DigitalNomadType = {
+  id: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  nickname: string;
+  gender: string;
+  location: LocationType;
+};
+
 export enum SortDirection {
   ASC = 1,
   DESC = -1,

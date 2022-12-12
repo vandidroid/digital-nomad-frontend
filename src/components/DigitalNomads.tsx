@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { DigitalNomadType } from "../types";
+import DigitalNomad from "./DigitalNomad";
+import "./DigitalNomads.scss";
 
 function DigitalNomads() {
   const title = "Dinos";
@@ -17,9 +20,13 @@ function DigitalNomads() {
   return (
     <div className="DigitalNomads">
       <h3 hidden>{title}</h3>
-      {digitalNomads.map((dino: any) => (
-        <div key={dino.id}>{dino.nickname}</div>
-      ))}
+      <article>
+        {digitalNomads.map((digitalNomad: DigitalNomadType, index: number) => (
+          <div key={digitalNomad.id}>
+            <DigitalNomad index={index} data={digitalNomad} />
+          </div>
+        ))}
+      </article>
     </div>
   );
 }
