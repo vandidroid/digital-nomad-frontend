@@ -16,7 +16,10 @@ function Menu({ items }: MenuProps) {
                 "/" + item.path === locationUrl.pathname ? "active" : ""
               }
             >
-              <Link to={item.path}>{item.title}</Link>
+              <Link to={item.path}>
+                <span>{item.icon}</span>
+                <div>{item.title}</div>
+              </Link>
             </li>
           ))}
         </ul>

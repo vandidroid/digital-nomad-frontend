@@ -1,4 +1,6 @@
-export type MenuProps = { items: { title: string; path: string }[] };
+export type MenuProps = {
+  items: { title: string; path: string; icon: JSX.Element }[];
+};
 
 export type CountryType = {
   id: number;

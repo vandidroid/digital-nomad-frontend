@@ -6,23 +6,30 @@ import DigitalNomads from "./components/DigitalNomads";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 
+import { BiHomeHeart } from "react-icons/bi";
+import { MdHome, MdLocationCity, MdFlag, MdEmojiPeople } from "react-icons/md";
+
 function App() {
   const items = [
     {
       title: "Home",
       path: "",
+      icon: <MdHome />,
     },
     {
       title: "Countries",
       path: "countries",
+      icon: <MdFlag />,
     },
     {
       title: "Locations",
       path: "locations",
+      icon: <MdLocationCity />,
     },
     {
       title: "Digital Nomads",
       path: "dinos",
+      icon: <MdEmojiPeople />,
     },
   ];
 
