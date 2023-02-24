@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { LocationType, SortDirection, SortType } from "../types";
+import Loader from "./Loader";
 import Location from "./Location";
 import "./Locations.scss";
 
@@ -62,13 +63,13 @@ function Locations() {
           location.country.name.toLowerCase().includes(nameFilter.toLowerCase())
       )
     );
-  }, [nameFilter]);
+  }, [nameFilter, locations]);
 
   useEffect(() => {
     fetchLocations();
   }, []);
 
-  return (
+  return locations.length ? (
     <div className="Locations">
       <h3 hidden>Locations</h3>
       <section>
@@ -111,6 +112,8 @@ function Locations() {
           ))}
       </article>
     </div>
+  ) : (
+    <Loader />
   );
 }
 export default Locations;

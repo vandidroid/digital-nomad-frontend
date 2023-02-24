@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { DigitalNomadType, SortDirection, SortType } from "../types";
 import DigitalNomad from "./DigitalNomad";
 import "./DigitalNomads.scss";
+import Loader from "./Loader";
 
 function DigitalNomads() {
   const title = "Digital Nomads";
@@ -93,13 +94,13 @@ function DigitalNomads() {
         digitalNomad.nickname.toLowerCase().includes(nameFilter.toLowerCase())
       )
     );
-  }, [nameFilter]);
+  }, [nameFilter, digitalNomads]);
 
   useEffect(() => {
     fetchDigitalNomads();
   }, []);
 
-  return (
+  return digitalNomads.length ? (
     <div className="DigitalNomads">
       <h3 hidden>{title}</h3>
 
@@ -149,6 +150,8 @@ function DigitalNomads() {
           ))}
       </article>
     </div>
+  ) : (
+    <Loader />
   );
 }
 
