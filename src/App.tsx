@@ -1,3 +1,5 @@
+import { MdHome, MdLocationCity, MdFlag, MdEmojiPeople } from "react-icons/md";
+
 import "./App.scss";
 import Countries from "./components/Countries";
 import Menu from "./components/Menu";
@@ -5,9 +7,6 @@ import Locations from "./components/Locations";
 import DigitalNomads from "./components/DigitalNomads";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
-
-import { BiHomeHeart } from "react-icons/bi";
-import { MdHome, MdLocationCity, MdFlag, MdEmojiPeople } from "react-icons/md";
 
 function App() {
   const items = [

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CountryType, SortDirection, SortType } from "../types";
 import "./Countries.scss";
 import Country from "./Country";
+import Loader from "./Loader";
 
 function Countries() {
   const [countries, setCountries] = useState<CountryType[]>([]);
@@ -52,15 +53,16 @@ function Countries() {
         country.name.toLowerCase().includes(nameFilter.toLowerCase())
       )
     );
-  }, [nameFilter]);
+  }, [nameFilter, countries]);
 
   useEffect(() => {
     fetchCountries();
   }, []);
 
-  return (
+  return countries.length ? (
     <div className="Countries">
       <h3 hidden>Countries</h3>
+
       <section>
         <input
           type="search"
@@ -103,6 +105,8 @@ function Countries() {
           ))}
       </article>
     </div>
+  ) : (
+    <Loader />
   );
 }
 
