@@ -3,6 +3,7 @@ import { DigitalNomadType, SortDirection, SortType } from "../types";
 import DigitalNomad from "./DigitalNomad";
 import "./DigitalNomads.scss";
 import Loader from "./Loader";
+import { API_SERVER } from "../globals";
 
 function DigitalNomads() {
   const title = "Digital Nomads";
@@ -20,7 +21,7 @@ function DigitalNomads() {
   });
 
   const fetchDigitalNomads = async () => {
-    const result = await fetch("/api/nomads");
+    const result = await fetch(API_SERVER + "/api/nomads");
     const digitalNomads = await result.json();
     setDigitalNomads(digitalNomads);
     setFilteredDigitalNomads(digitalNomads);

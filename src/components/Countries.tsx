@@ -3,6 +3,7 @@ import { CountryType, SortDirection, SortType } from "../types";
 import "./Countries.scss";
 import Country from "./Country";
 import Loader from "./Loader";
+import { API_SERVER } from "../globals";
 
 function Countries() {
   const [countries, setCountries] = useState<CountryType[]>([]);
@@ -15,7 +16,7 @@ function Countries() {
   });
 
   const fetchCountries = async () => {
-    const result = await fetch("/api/countries");
+    const result = await fetch(API_SERVER + "/api/countries");
     const countries = await result.json();
     setCountries(countries);
     setFilteredCountries(countries);

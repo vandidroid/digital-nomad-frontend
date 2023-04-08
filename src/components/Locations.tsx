@@ -3,6 +3,7 @@ import { LocationType, SortDirection, SortType } from "../types";
 import Loader from "./Loader";
 import Location from "./Location";
 import "./Locations.scss";
+import { API_SERVER } from "../globals";
 
 function Locations() {
   const [locations, setLocations] = useState<LocationType[]>([]);
@@ -17,7 +18,7 @@ function Locations() {
   });
 
   const fetchLocations = async () => {
-    const result = await fetch("/api/locations");
+    const result = await fetch(API_SERVER + "/api/locations");
     const locations = await result.json();
     setLocations(locations);
     setFilteredLocations(locations);
