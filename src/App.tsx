@@ -1,4 +1,10 @@
-import { MdHome, MdLocationCity, MdFlag, MdEmojiPeople } from "react-icons/md";
+import {
+  MdHome,
+  MdLocationCity,
+  MdFlag,
+  MdEmojiPeople,
+  MdLogin,
+} from "react-icons/md";
 
 import "./App.scss";
 import Countries from "./components/Countries";
@@ -29,6 +35,11 @@ function App() {
       title: "Digital Nomads",
       path: "dinos",
       icon: <MdEmojiPeople />,
+    },
+    {
+      title: "Login",
+      path: "login",
+      icon: <MdLogin />,
     },
   ];
 
