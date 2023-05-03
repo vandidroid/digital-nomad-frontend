@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { DigitalNomadType, SortDirection, SortType } from "../types";
 import DigitalNomad from "./DigitalNomad";
 import "./DigitalNomads.scss";
@@ -7,6 +8,8 @@ import { API_SERVER } from "../globals";
 
 function DigitalNomads() {
   const title = "Digital Nomads";
+
+  const navigate = useNavigate();
 
   const [digitalNomads, setDigitalNomads] = useState<DigitalNomadType[]>([]);
   const [filteredDigitalNomads, setFilteredDigitalNomads] = useState<
@@ -22,9 +25,14 @@ function DigitalNomads() {
 
   const fetchDigitalNomads = async () => {
     const result = await fetch(API_SERVER + "/api/nomads");
-    const digitalNomads = await result.json();
-    setDigitalNomads(digitalNomads);
-    setFilteredDigitalNomads(digitalNomads);
+
+    if (result.status === 200) {
+      const digitalNomads = await result.json();
+      setDigitalNomads(digitalNomads);
+      setFilteredDigitalNomads(digitalNomads);
+    } else {
+      navigate("/login");
+    }
   };
 
   const filterDigitalNomads = (e: React.FormEvent<HTMLInputElement>) => {
