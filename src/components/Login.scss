@@ -1,0 +1,95 @@
+.Login {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+  form {
+    display: block;
+    padding: 2rem;
+    min-width: 400px;
+    width: 500px;
+    border-width: 1px;
+    border-color: #242424;
+    border-style: solid;
+    border-radius: 1rem;
+    background-color: #181c24;
+    background-color: rgba($color: #333, $alpha: 0.2);
+    box-shadow: 2px 2px 16px #111;
+
+    h2 {
+      margin: 0;
+      padding: 0 0 1rem;
+      font-size: 1.6rem;
+      text-transform: capitalize;
+    }
+
+    div {
+      padding: 1rem;
+
+      input {
+        background-color: #111;
+        border: 0;
+        margin-top: 0.5rem;
+        padding: 1rem;
+      }
+
+      input:focus {
+        background-color: black;
+      }
+
+      &.glow {
+        margin: 1rem;
+        margin-top: 2rem;
+        padding: 0;
+        border-radius: 0.5rem;
+        position: relative;
+        height: 3.2rem;
+        overflow: hidden;
+      }
+
+      &.glow::before {
+        content: "";
+        position: absolute;
+        top: -250px;
+        left: -50px;
+        width: 500px;
+        height: 500px;
+        background-image: linear-gradient(0deg, red, red, salmon, red, red);
+        animation: rotate 8s linear infinite;
+      }
+
+      button {
+        position: absolute;
+        inset: 3px;
+        /*
+        background-image: linear-gradient(180deg, orangered, red);
+*/
+        background-color: #111;
+        color: whitesmoke;
+        margin: 0;
+        padding: 1rem;
+        border: 0;
+        border-radius: 0.5rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 0.2rem;
+        cursor: pointer;
+      }
+
+      button:hover {
+        color: #000;
+        background-image: linear-gradient(orangered, orangered);
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -13,6 +13,7 @@ import Locations from "./components/Locations";
 import DigitalNomads from "./components/DigitalNomads";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
+import Login from "./components/Login";
 
 function App() {
   const items = [
@@ -51,6 +52,7 @@ function App() {
           <Route path="countries" element={<Countries />} />
           <Route path="locations" element={<Locations />} />
           <Route path="dinos" element={<DigitalNomads />} />
+          <Route path="login" element={<Login />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </main>
