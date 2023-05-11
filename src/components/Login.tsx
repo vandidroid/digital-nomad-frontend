@@ -2,10 +2,14 @@ import { useState } from "react";
 
 import "./Login.scss";
 import { API_SERVER } from "../globals";
+import { useNavigate } from "react-router";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const navigate = useNavigate();
 
   const authenticate = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,10 +21,15 @@ function Login() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     });
-    const data = await result.json();
-    const token = data.token;
 
-    console.log(token);
+    if (result.status === 200) {
+      const data = await result.json();
+      sessionStorage.setItem("token", data.token);
+      navigate("/dinos");
+    } else {
+      sessionStorage.removeItem("token");
+      setErrorMessage("Invalid username or password");
+    }
   };
 
   return (
@@ -51,6 +60,7 @@ function Login() {
         <div className="glow">
           <button type="submit">Login</button>
         </div>
+        <div className="error-message">{errorMessage}</div>
       </form>
     </div>
   );

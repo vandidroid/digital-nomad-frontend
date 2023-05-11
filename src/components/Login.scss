@@ -81,6 +81,11 @@
         color: #000;
         background-image: linear-gradient(orangered, orangered);
       }
+
+      &.error-message {
+        color: orangered;
+        text-align: center;
+      }
     }
   }
 }

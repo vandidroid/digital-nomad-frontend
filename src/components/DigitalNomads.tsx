@@ -24,7 +24,11 @@ function DigitalNomads() {
   });
 
   const fetchDigitalNomads = async () => {
-    const result = await fetch(API_SERVER + "/api/nomads");
+    const token = sessionStorage.getItem("token");
+
+    const result = await fetch(API_SERVER + "/api/nomads", {
+      headers: { Authorization: "Bearer " + token },
+    });
 
     if (result.status === 200) {
       const digitalNomads = await result.json();
